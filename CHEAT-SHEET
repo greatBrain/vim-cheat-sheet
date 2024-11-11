@@ -1,0 +1,208 @@
+# Vim / Neovim / Lunar Vim Cheat Sheet
+
+BASICS
+======
+
+Command	Action
+:help	open a help window
+:write	write to a file
+:wq	write to a file and quit window or Vim
+:quit	quit current window (when one window quit Vim)
+
+
+CURSOR MOVEMENT
+================
+
+- Horizontal
+
+Command	Action
+
+[n] h	cursor N chars to the left
+[n] l	cursor N chars to the right
+[n] w	cursor N words forward
+[n] W	cursor N WORDS forward
+[n] e	cursor forward to the end of word N
+[n] E	cursor forward to the end of WORD N
+[n] b	cursor N words backward
+[n] B	cursor N WORDS backward
+0	cursor to the first char of the line
+^	cursor to the first CHAR of the line
+[n] $	cursor to the end of Nth next line
+g_	cursor to the last CHAR N - 1 lines lower
+
+- Vertical
+
+Command	Action
+
+[n] j	cursor N lines downward
+[n] k	cursor N lines upward
+[n] H	cursor to line N from top of screen
+M	cursor to middle line of screen
+[n] L	cursor to line N from bottom of screen
+[n] gg	cursor to line N, default first line
+[n] G	cursor to line N, default last line
+
+
+PAGING
+======
+
+Command	Action
+
+C-D	Move cursor down one-half page
+C-U	Move cursor up one-half page
+C-B	Move screen up one page
+C-F	Move screen down one page
+
+
+INSERT MODE
+===========
+
+Command	Action
+
+[n] i	insert text before the cursor N times
+[n] I	insert text before the first CHAR on the line N times
+[n] a	append text after the cursor N times
+[n] A	append text after the end of the line N times
+[n] o	begin a new line below the cursor and insert text, repeat N times
+[n] O	begin a new line above the cursor and insert text, repeat N times
+[n] cc	Delete the current line then enter INSERT mode
+[n] C	change from the cursor position to the end of the line, and N-1 more lines [into register x]; synonym for "c$"
+c$	Delete from the cursor position to the end of the line, and enter INSERT mode
+cw	Delete from the cursor position to the end of the current word, and enter INSERT mode
+ce	Delete from the cursor position to the end of the current word, and enter INSERT mode
+ciw	Delete the current inner-word, and enter INSERT mode
+[n] s	(substitute) delete N characters [into register x] and start insert
+[n] S	delete N lines [into register x] and start insert; synonym for "cc".
+
+
+
+VISUAL MODE
+===========
+
+Command	Action
+
+o	move cursor to other corner of area
+O	move horizontally to other corner of area
+Esc	Return to NORMAL mode
+aw	extend highlighted area with "a word"
+ab	extend highlighted area with a () block
+aB	extend highlighted area with a {} block
+at	extend highlighted area with a tag block
+ib	extend highlighted area with inner () block
+iB	extend highlighted area with inner {} block
+it	extend highlighted area with inner tag block
+
+
+EDITING
+========
+
+Command	Action
+
+[n] r{char}	replace N chars with {char}
+R	enter replace mode: overtype existing characters, repeat the entered text N-1 times
+J	Join N lines; default is 2
+gJ	join lines without inserting space
+gwip	Reflow the current paragraph
+u	undo changes
+
+
+CUT & PASTE
+============
+
+Command	Action
+
+[n] yy	Yank the current line
+yiw	Yank inner word
+y$	Yank to end of current line
+[n] Y	Yank to end of current line
+[n] p	put the text [from register x] after the cursor N times
+[n] P	Paste before the cursor
+[n] dd	Delete the current line
+diw	Delete inner word
+d$	Delete to end of current line
+[n] D	delete the characters under the cursor until the end of the line and N-1 more lines [into register x]; synonym for "d$"
+[n] x	delete N characters under and after the cursor [into register x]
+
+
+REGISTERS
+=========
+
+Command	Action
+
+:registers	display the contents of registers
+y	yank operator
+p	put the text [from register x] after the cursor N times
+Marks
+Command	Action
+:marks	list all marks
+`x	Jump to mark x
+'x	Jump to the start of the line containing mark x
+
+
+JUMPS
+======
+
+Command	Action
+:jumps	print the jump list
+C-I	same as <Tab>
+C-O	Jump one step backward within jump list
+``	cursor to the position before latest jump
+`"	Go the position of the most recent edit prior to saving this file
+
+
+CHANGES
+=======
+
+Command	Action
+:changes	print the change list
+[n] g,	go to N newer position in change list
+[n] g;	go to N older position in change list
+
+
+MACROS
+======
+
+Command	Action
+
+q{0-9a-zA-Z"}	record typed characters into named register {0-9a-zA-Z"} (uppercase to append)
+q	(while recording) stops recording
+[n] @{a-z}	execute the contents of register {a-z} N times
+[n] @@	repeat the previous @{a-z} N times
+
+
+BUFFERS
+========
+
+Command	Action
+
+:bnext	go to next buffer in the buffer list
+:bprevious	go to previous buffer in the buffer list
+:bdelete	remove a buffer from the buffer list
+:ls	list all buffers
+
+WINDOWS
+========
+
+Command	Action
+
+[n] C-W s	split current window in two parts, new window N lines high
+[n] C-W v	split current window vertically, new window N columns wide
+[n] C-W h	go to Nth left window (stop at first window)
+[n] C-W j	go N windows down (stop at last window)
+[n] C-W k	go N windows up (stop at first window)
+[n] C-W l	go to Nth right window (stop at last window)
+[n] C-W x	exchange current window with window N (default: next window)
+
+FOLDS
+======
+
+Command	Action
+
+za	open a closed fold, close an open fold
+zm	subtract one from 'foldlevel'
+zo	open fold
+zO	open folds recursively
+zc	close a fold
+zC	close folds recursively
+zr	add one to 'foldlevel'
+zR	set 'foldlevel' to the deepest fold
